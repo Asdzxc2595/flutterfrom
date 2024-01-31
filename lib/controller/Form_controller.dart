@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class FormController extends GetxController {
   final GlobalKey<FormState> loginformkey = GlobalKey<FormState>();
@@ -12,6 +15,12 @@ class FormController extends GetxController {
   var cowdad = '';
   var numbercalf = '';
   var cowcalf = '';
+  var selectedimg = ''.obs;
+  var selectedsize = ''.obs;
+
+  var sex = false.obs;
+  var inputcow = false.obs;
+  var Inputbreed = false.obs;
 
   @override
   void onInit() {
@@ -67,4 +76,34 @@ class FormController extends GetxController {
     loginformkey.currentState!.save();
   }
 
+  void sexcow() {
+    sex.value = !sex.value;
+    print(sex.value);
+    //Get.forceAppUpdate();
+  }
+
+  void morenumcow() {}
+  void InputCow() {
+    inputcow.value = !inputcow.value;
+  }
+
+  void InputBreed() {
+    Inputbreed.value = !Inputbreed.value;
+  }
+
+  void getImages(ImageSource imageSource) async {
+    final pickedFile = await ImagePicker().pickImage(source: imageSource);
+    if (pickedFile != null) {
+      selectedimg.value = pickedFile.path;
+      selectedsize.value =
+          ((File(selectedimg.value)).lengthSync() / 1024 / 1024)
+                  .toStringAsFixed(2) +
+              "mb";
+    } else {
+      Get.snackbar(('error'), 'no img',
+          snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.cyan);
+    }
+  } 
+
+  
 }

@@ -3,26 +3,24 @@ import 'package:get/get.dart';
 
 import '../controller/Form_controller.dart';
 
-class Cowmom extends StatelessWidget {
-  const Cowmom({super.key});
+class Cowmat extends StatelessWidget {
+  const Cowmat({super.key});
 
   @override
   Widget build(BuildContext context) {
     FormController controller = Get.put(FormController());
     return Padding(
-      padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
+      padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
       child: TextFormField(
         decoration: const InputDecoration(
-          label: Text("แม่โคที่คลอด"),
-          border: OutlineInputBorder(),
-        ),
+            label: Text("เลือกฝูง"), border: OutlineInputBorder(),suffixIcon: Icon(Icons.arrow_circle_down),),
         keyboardType: TextInputType.text,
-        controller: controller.cowmomController,
+        controller: controller.cowdadController,
         onSaved: (value) {
-          controller.cowmom = value!;
+          controller.cowdad = value!;
         },
         validator: (value) {
-          return controller.validatecowmom(value!);
+          return controller.validatecowdad(value!);
         },
       ),
     );

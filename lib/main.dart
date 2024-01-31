@@ -8,8 +8,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const appTitle = 'Form Styling Demo';
-    return const MaterialApp(
+    const appTitle = 'memo';
+    return const MaterialApp(debugShowCheckedModeBanner: false,
       title: appTitle,
       home: Homepage(),
     );
