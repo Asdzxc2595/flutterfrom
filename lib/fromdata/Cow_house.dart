@@ -24,7 +24,7 @@ class _CowhouseState extends State<Cowhouse> {
           decoration: const InputDecoration(
             label: Text('เลือกโรงเรือน'),border: OutlineInputBorder(),
           ),
-          items: ['โรงเรือน 1', 'โรงเรือน 2'].map((String value) {
+          items: ['โรงเรือน 1', 'โรงเรือน 2','โรง3'].map((String value) {
             return DropdownMenuItem<String>(
               value: value,
               child: Text(value),

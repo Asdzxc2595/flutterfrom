@@ -42,18 +42,34 @@ class Homepage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Center(
-                    child: Padding(
-                        padding: const EdgeInsets.all(30),
-                        child: Column(
-                          children: [
-                            Container(
-                              child: DottedBorder(
-                                  child: Image.asset("lib/img/cow.jpg")),
-                            ),Center(child: ElevatedButton(onPressed: (){controller.getImages(ImageSource.gallery);},child: Text('eiei'),),)
-                          ],
-                        ),
-                        ),
-                        ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(30),
+                    child: Column(
+                      children: [
+                        Container(
+                          child: DottedBorder(
+                              child: Image.asset("lib/img/cow.jpg")),
+                        ),SizedBox(height: 5,),
+                        Center(
+                          child: ElevatedButton(
+                            onPressed: () {
+                              controller.getImages(ImageSource.gallery);
+                            },
+                            child: Text('galley'),
+                          ),
+                        ), SizedBox(height: 5),
+                            Center(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                controller.getImages(ImageSource.camera);
+                              },
+                              child: Text('camera'),
+                            ),),
+                        
+                      ],
+                    ),
+                  ),
+                ),
                 const SizedBox(
                   height: 20,
                 ),
@@ -142,7 +158,7 @@ class Homepage extends StatelessWidget {
                 Center(
                   child: ElevatedButton(
                       onPressed: () {
-                        controller.getImages(ImageSource.camera);
+                        controller.Check();
                       },
                       style: const ButtonStyle(
                           backgroundColor:
