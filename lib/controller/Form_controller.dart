@@ -17,6 +17,7 @@ class FormController extends GetxController {
   var cowcalf = '';
   var selectedimg = ''.obs;
   var selectedsize = ''.obs;
+  var inputcowmat = false.obs;
 
   var sex = false.obs;
   var inputcow = false.obs;
@@ -67,6 +68,11 @@ class FormController extends GetxController {
     }
     return null;
   }
+  String? validatecowmet(String value){
+    if(value.length <=0){
+      return "ใส่ความ";
+    }return null;
+  }
 
   void Check() {
     final isValid = loginformkey.currentState!.validate();
@@ -90,20 +96,27 @@ class FormController extends GetxController {
   void InputBreed() {
     Inputbreed.value = !Inputbreed.value;
   }
-
+  void InputCowmat() {
+    inputcowmat.value = !inputcowmat.value;
+  }
   void getImages(ImageSource imageSource) async {
     final pickedFile = await ImagePicker().pickImage(source: imageSource);
     if (pickedFile != null) {
       selectedimg.value = pickedFile.path;
       selectedsize.value =
-          ((File(selectedimg.value)).lengthSync() / 1024 / 1024)
-                  .toStringAsFixed(2) +
-              "mb";
+          "${((File(selectedimg.value)).lengthSync() / 1024 / 1024)
+                  .toStringAsFixed(2)}mb";
     } else {
       Get.snackbar(('error'), 'no img',
           snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.cyan);
     }
-  } 
-
+  }
+  // String? validatedate(String? value){
+  //   (value){
+  //     if(value==null ||value.isEmpty){
+  //       return 'เลือกวัน';
+  //     }
+  //   };
+  // }
   
 }

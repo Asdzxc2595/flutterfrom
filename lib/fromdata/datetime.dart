@@ -14,7 +14,7 @@ class DatetimeC extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController dateInput = TextEditingController();
     DateTime DateW = DateTime.now();
-    var label = "เลือกวันนะ";
+
     var daycount = '0'.obs;
 
     // final firstdate = DateTime(2000);
@@ -24,6 +24,12 @@ class DatetimeC extends StatelessWidget {
       child: Column(
         children: [
           TextFormField(
+            validator: (value) {
+            if (value==null || value.isEmpty){
+              return 'เลือกวัน';
+            }
+            return null;
+          },
             readOnly: true,
             controller: dateInput,
             onTap: () async {
@@ -48,11 +54,8 @@ class DatetimeC extends StatelessWidget {
                 DateW = dateTime;
                 daycount.value =
                     daysBetween(dateTime, DateTime.now()).toString();
-                print(DateW);
-                print(dateTime);
                 String formattedDate = DateFormat('yyyy-MM-dd').format(DateW);
                 dateInput.text = formattedDate;
-                print(daycount);
               }
             },
             decoration: const InputDecoration(
@@ -68,7 +71,7 @@ class DatetimeC extends StatelessWidget {
             children: [
               Obx(() => Text(
                     "อายุ ${daycount.value} วัน",
-                    style: TextStyle(fontSize: 10),
+                    style:const TextStyle(fontSize: 10),
                   )),
             ],
           )

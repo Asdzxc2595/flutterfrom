@@ -120,7 +120,7 @@ class Homepage extends StatelessWidget {
                           SizedBox(
                             height: 10,
                           ),
-                          Status(),
+                          CowStatus(),
 
                           //                 Center(
                           //                    child: SizedBox(
