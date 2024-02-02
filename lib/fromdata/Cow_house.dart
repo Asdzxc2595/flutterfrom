@@ -6,25 +6,29 @@ class Cowhouse extends StatefulWidget {
   const Cowhouse({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _CowhouseState createState() => _CowhouseState();
 }
 
 class _CowhouseState extends State<Cowhouse> {
-  String? selectedValue;
+  String? selectedValuee;
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
+    return Padding(
       padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
       child: Container(
-        decoration: const BoxDecoration(),
         child: DropdownButtonFormField<String>(
-          value: selectedValue,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'กรุณาเลือกโรงเรือน';
+            }return null;
+          },
+          value: selectedValuee,
           decoration: const InputDecoration(
-            label: Text('เลือกโรงเรือน'),border: OutlineInputBorder(),
+            label: Text('เลือกโรงเรือน'),
+            border: OutlineInputBorder(),
           ),
-          items: ['โรงเรือน 1', 'โรงเรือน 2','โรง3'].map((String value) {
+          items: ['โรงเรือน 1', 'โรงเรือน 2', 'โรงเรือน 3'].map((String value) {
             return DropdownMenuItem<String>(
               value: value,
               child: Text(value),
@@ -32,7 +36,7 @@ class _CowhouseState extends State<Cowhouse> {
           }).toList(),
           onChanged: (String? value) {
             setState(() {
-              selectedValue = value;
+              selectedValuee = value;
             });
           },
         ),
