@@ -24,12 +24,13 @@ class Sexcow extends StatelessWidget {
                   color: controller.sex.value ? Colors.grey : Colors.pinkAccent,
                   borderRadius: BorderRadius.circular(20.0),
                 ),
-                child: const Center(
+                child: Center(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.male_outlined),
-                      Text('data'),
+                      Container(decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(50)),
+                        child: Icon(Icons.female_rounded,color: Colors.pink ,)),
+                      Text('เพศเมีย',style: TextStyle(color:controller.sex.value ? Color.fromARGB(255, 90, 90, 90) : Colors.white  ),),
                     ],
                   ),
                 ),
@@ -48,15 +49,18 @@ class Sexcow extends StatelessWidget {
                 width: 100,
                 height: 30,
                 decoration: BoxDecoration(
-                  color: controller.sex.value ? Colors.pink: Colors.grey,
+                  color: controller.sex.value ? Colors.pink: Color.fromARGB(255, 180, 180, 180),
                   borderRadius: BorderRadius.circular(20.0),
                 ),
-                child: const Center(
+                child: Center(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.male_outlined),
-                      Text('data'),
+                      Container(
+                        decoration: BoxDecoration(color: Colors.white,borderRadius:BorderRadius.circular(50)),
+                        child: const Icon(Icons.male_outlined,color: Colors.blue,)),
+                        SizedBox(width: 5,),
+                        Text('เพศผู้',style: TextStyle(color: controller.sex.value ? Colors.white : Color.fromARGB(255, 90, 90, 90)),),
                     ],
                   ),
                 ),

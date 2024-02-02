@@ -24,12 +24,13 @@ class Homepage extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.pink[400],
           title: const Row(
             children: [
-              Icon(Icons.diversity_1),
+              Icon(Icons.arrow_back,color: Colors.white,),
+              SizedBox(width: 10,),
               SizedBox(
-                child: Text('แจ้งเกิดลูกโค'),
+                child: Text('แจ้งเกิดลูกโค',style: TextStyle(color: Colors.white),),
               )
             ],
           ),
