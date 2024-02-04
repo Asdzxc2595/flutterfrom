@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfrom/controller/Form_controller.dart';
@@ -27,10 +29,18 @@ class Homepage extends StatelessWidget {
           backgroundColor: Colors.pink[400],
           title: const Row(
             children: [
-              Icon(Icons.arrow_back,color: Colors.white,),
-              SizedBox(width: 10,),
+              Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+              ),
               SizedBox(
-                child: Text('แจ้งเกิดลูกโค',style: TextStyle(color: Colors.white),),
+                width: 10,
+              ),
+              SizedBox(
+                child: Text(
+                  'แจ้งเกิดลูกโค',
+                  style: TextStyle(color: Colors.white),
+                ),
               )
             ],
           ),
@@ -49,24 +59,33 @@ class Homepage extends StatelessWidget {
                       children: [
                         Container(
                           child: DottedBorder(
-                              child: Image.asset("lib/img/cow.jpg")),
-                        ),SizedBox(height: 5,),
+                              child: controller.selectedimg.value == ''
+                                  ? Text('data')
+                                  : Image.file(
+                                      File(controller.selectedimg.value))
+                              //child: Image.asset("lib/img/cow.jpg"),
+                              ),
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
                         Center(
                           child: ElevatedButton(
                             onPressed: () {
                               controller.getImages(ImageSource.gallery);
                             },
-                            child: Text('galley'),
+                            child: const Text('galley'),
                           ),
-                        ), SizedBox(height: 5),
-                            Center(
-                            child: ElevatedButton(
-                              onPressed: () {
-                                controller.getImages(ImageSource.camera);
-                              },
-                              child: Text('camera'),
-                            ),),
-                        
+                        ),
+                        const SizedBox(height: 5),
+                        Center(
+                          child: ElevatedButton(
+                            onPressed: () {
+                              controller.getImages(ImageSource.camera);
+                            },
+                            child: const Text('camera'),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -98,7 +117,7 @@ class Homepage extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(width: 1, color: Colors.pinkAccent)),
-                    child: const Padding(
+                    child:  Padding(
                       padding: EdgeInsets.all(10.0),
                       child: Column(
                         children: [

@@ -99,18 +99,20 @@ class FormController extends GetxController {
   void InputCowmat() {
     inputcowmat.value = !inputcowmat.value;
   }
+ 
   void getImages(ImageSource imageSource) async {
-    final pickedFile = await ImagePicker().pickImage(source: imageSource);
-    if (pickedFile != null) {
-      selectedimg.value = pickedFile.path;
-      selectedsize.value =
-          "${((File(selectedimg.value)).lengthSync() / 1024 / 1024)
-                  .toStringAsFixed(2)}mb";
-    } else {
-      Get.snackbar(('error'), 'no img',
-          snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.cyan);
-    }
+  final pickedFile = await ImagePicker().pickImage(source: imageSource);
+  if (pickedFile != null) {
+    selectedimg.value = pickedFile.path;
+    selectedsize.value =
+        "${((File(selectedimg.value)).lengthSync() / 1024 / 1024).toStringAsFixed(2)} MB";
+  } else {
+    Get.snackbar('Error', 'No image selected',
+        snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.cyan);
   }
+  update();
+}
+
   // String? validatedate(String? value){
   //   (value){
   //     if(value==null ||value.isEmpty){

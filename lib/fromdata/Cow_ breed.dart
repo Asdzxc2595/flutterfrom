@@ -18,7 +18,18 @@ class Cowbreed extends StatelessWidget {
       child: Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text(
+                'สายพันธ์',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.redAccent,
+                    fontSize: 30),
+              )
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Center(
                 child: Obx(() {
@@ -39,7 +50,10 @@ class Cowbreed extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text('5 สายพันธุ์',style: TextStyle(color: Colors.white),),
+                            Text(
+                              '5 สายพันธุ์',
+                              style: TextStyle(color: Colors.white),
+                            ),
                           ],
                         ),
                       ),
@@ -67,7 +81,10 @@ class Cowbreed extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text('8 สายพันธุ์',style: TextStyle(color: Colors.white),),
+                            Text(
+                              '8 สายพันธุ์',
+                              style: TextStyle(color: Colors.white),
+                            ),
                           ],
                         ),
                       ),
@@ -84,14 +101,17 @@ class Cowbreed extends StatelessWidget {
                     color: Colors.pink,
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: const  Center(
+                  child: const Center(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(Icons.compare_arrows_outlined,
-                        color: Colors.white),
+                            color: Colors.white),
                         SizedBox(width: 5),
-                        Text('สัดส่วน',style: TextStyle(color: Colors.white),),
+                        Text(
+                          'สัดส่วน',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ],
                     ),
                   ),
@@ -99,7 +119,24 @@ class Cowbreed extends StatelessWidget {
               ),
             ],
           ),
-          //SizedBox(), Row(children: [Align(alignment: Alignment.bottomCenter,)],)
+          SizedBox(
+            width: 10,
+          ),
+          Obx(() {
+            return Row(
+              children: [
+                Text(
+                  controller.Inputbreed.value
+                      ? '8 สายพันธ์ = 50%'
+                      : '5 สายพันธ์ = 50%',
+                  style: TextStyle(
+                    fontSize: 40,
+                    color: Colors.red,shadows: RxList()
+                  ),
+                ),
+              ],
+            );
+          })
         ],
       ), //)
     );
